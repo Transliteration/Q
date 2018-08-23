@@ -1,3 +1,20 @@
+# Compiled Object files
+*.o
+*.obj
+*.bat
+
+# Compiled Dynamic libraries
+*.dll
+
+# Executables
+*.exe
+*.out
+
+# Paths
+Build/
+.vscode
+
+# CMake unnecessary files
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
@@ -7,3 +24,18 @@ cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
+
+### SonarQube ###
+# SonarQube ignore files.
+#
+# https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
+# Sonar Scanner working directories
+.sonar/
+.scannerwork/
+bw-output
+
+# http://www.sonarlint.org/commandline/
+# SonarLint working directories, configuration files (including credentials)
+.sonarlint/
+
+launhSolarTest.bat
