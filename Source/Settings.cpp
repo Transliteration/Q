@@ -6,6 +6,15 @@ Settings::Settings(const std::string &pathToData)
 {
     loadData(pathToData);
 
+    std::cout << "Data loaded succesfully!" << std::endl;
+
+    if (!font.loadFromFile("Resources/Fonts/SIMPLIFICA Typeface.ttf")) {
+		std::cout << "Font didn't load!" << std::endl;
+		throw;
+	}
+
+    std::cout << "Font loaded succesfully!" << std::endl;
+
     std::cout << "Settings is set!" << std::endl;
 }
 
@@ -55,4 +64,9 @@ sf::Vector2u Settings::getWindowSize()
 int Settings::getWindowStyle()
 {
     return windowStyle;
+}
+
+const sf::Font &Settings::getFont()
+{
+    return font;
 }
