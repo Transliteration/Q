@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GameInitializer.hpp"
 #include "ScreenManager.hpp"
 
