@@ -1,3 +1,4 @@
+#include <memory>
 #include "ScreenMenu.hpp"
 #include "Settings.hpp"
 #include "Button.hpp"
@@ -6,9 +7,18 @@ ScreenMenu::ScreenMenu(Settings &settings)
 : Screen(settings)
 {
     const sf::Font &font = settings.getFont();
-    objects.emplace_back(new Button(font, sf::Vector2f(0.15f, 0.6f), "New game"));
-    objects.emplace_back(new Button(font, sf::Vector2f(0.15f, 0.7f), "Settings"));
-    objects.emplace_back(new Button(font, sf::Vector2f(0.15f, 0.8f), "Exit"));
+
+    std::shared_ptr<Button> buttonNewGame(new Button(font, sf::Vector2f(0.15f, 0.6f), "New game"));
+    objects.emplace_back(buttonNewGame);
+    clickable.emplace_back(buttonNewGame);
+
+    std::shared_ptr<Button> buttonSettings(new Button(font, sf::Vector2f(0.15f, 0.7f), "Settings"));
+    objects.emplace_back(buttonSettings);
+    clickable.emplace_back(buttonSettings);
+
+    std::shared_ptr<Button> buttonExit(new Button(font, sf::Vector2f(0.15f, 0.8f), "Exit"));
+    objects.emplace_back(buttonExit);
+    clickable.emplace_back(buttonExit);
 
     for (const auto &object : objects)
         object->onChangeResoluton(settings.getWindowSize());
@@ -50,6 +60,23 @@ ScreenType ScreenMenu::run(sf::RenderWindow &window)
                     break;
 				default:
 				    break;
+
+                case sf::Event::MouseMoved:           
+                    for(auto&& objects : clickable)
+                        objects->onHover(sf::Mouse::getPosition());
+                    break;
+                
+                case sf::Event::MouseButtonPressed:
+                    switch(Event.mouseButton.button)
+                    {
+                        case sf::Mouse::Left:
+                            for(auto&& objects : clickable)
+                                objects->onClick(sf::Mouse::getPosition());
+                            break;
+                        default:
+                            break;
+                    }
+                    
 			}
 		}
 

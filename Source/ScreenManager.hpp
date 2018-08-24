@@ -13,6 +13,7 @@ private:
     Settings &settings;
     sf::RenderWindow window;
     std::vector<std::unique_ptr<Screen>> screens;
+    
 public:
     ScreenManager(Settings &settings);
     ~ScreenManager();

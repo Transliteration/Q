@@ -8,7 +8,7 @@ class Settings;
 class ScreenMenu : public Screen
 {
 private:
-    /* data */
+    
 public:
     ScreenMenu(Settings &settings);
     ~ScreenMenu();

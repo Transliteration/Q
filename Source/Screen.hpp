@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include "Drawable.hpp"
+#include "Clickable.hpp"
 
 class Settings;
 
@@ -12,7 +13,8 @@ class Screen
 {
 protected:
     Settings &settings;
-    std::vector<std::unique_ptr<Drawable>> objects; 
+    std::vector<std::shared_ptr<Drawable>> objects; 
+    std::vector<std::shared_ptr<Clickable>> clickable;
 public:
     Screen(Settings &settings);
     virtual ~Screen();
