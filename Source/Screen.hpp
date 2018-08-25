@@ -15,6 +15,7 @@ protected:
     Settings &settings;
     std::vector<std::shared_ptr<Drawable>> objects; 
     std::vector<std::shared_ptr<Clickable>> clickable;
+    ScreenType nextScreen;
 public:
     Screen(Settings &settings);
     virtual ~Screen();

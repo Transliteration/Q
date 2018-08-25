@@ -10,6 +10,8 @@
 #define B_DEF_RESOLUTION_HEIGHT 768
 #define B_DEF_RECT_OUTLINE_THICKNESS 4.0f
 
+enum class Align {Center, TopLeft};
+
 class Button : public Drawable, public Clickable
 {
 private:
@@ -18,12 +20,14 @@ private:
     sf::RectangleShape rectangle;
     sf::Vector2f relativePos, realPos;
     bool isHighlighted;
+    Align align;
 
     void setOriginToCenter();
     void setHighlight(bool isHighlighted);
+    void setOriginTopLeft();
 
 public:
-    Button(const sf::Font &font, sf::Vector2f relativePos, std::string message);
+    Button(const sf::Font &font, sf::Vector2f relativePos, std::string message, Align);
     ~Button();
 
     virtual void draw(sf::RenderTarget &target) const;

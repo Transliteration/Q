@@ -6,19 +6,25 @@
 ScreenMenu::ScreenMenu(Settings &settings)
 : Screen(settings)
 {
+    nextScreen = ScreenType::Menu;
     const sf::Font &font = settings.getFont();
 
-    std::shared_ptr<Button> buttonNewGame(new Button(font, sf::Vector2f(0.15f, 0.6f), "New game"));
+    std::shared_ptr<Button> buttonNewGame(new Button(font, sf::Vector2f(0.15f, 0.6f), "New game", Align::TopLeft));
     objects.emplace_back(buttonNewGame);
     clickable.emplace_back(buttonNewGame);
 
-    std::shared_ptr<Button> buttonSettings(new Button(font, sf::Vector2f(0.15f, 0.7f), "Settings"));
+    std::shared_ptr<Button> buttonSettings(new Button(font, sf::Vector2f(0.15f, 0.7f), "Settings", Align::TopLeft));
     objects.emplace_back(buttonSettings);
     clickable.emplace_back(buttonSettings);
 
-    std::shared_ptr<Button> buttonExit(new Button(font, sf::Vector2f(0.15f, 0.8f), "Exit"));
+    std::shared_ptr<Button> buttonExit(new Button(font, sf::Vector2f(0.15f, 0.8f), "Exit", Align::TopLeft));
+    
     objects.emplace_back(buttonExit);
     clickable.emplace_back(buttonExit);
+
+    buttonExit->setFunction([this](){ nextScreen = ScreenType::Exit; });
+    buttonNewGame->setFunction([this](){ nextScreen = ScreenType::Game; });
+    buttonSettings->setFunction([this](){ nextScreen = ScreenType::Settings; });
 
     for (const auto &object : objects)
         object->onChangeResoluton(settings.getWindowSize());
@@ -88,6 +94,9 @@ ScreenType ScreenMenu::run(sf::RenderWindow &window)
             object->draw(window);
 		
 		window.display();
+
+        if(nextScreen != ScreenType::Menu) 
+            return nextScreen;
 	}
 
     return ScreenType::Error;

@@ -40,21 +40,29 @@ void ScreenManager::start()
 {
     std::cout << "Opening menu..." << std::endl;
 
-    ScreenType nextScreen = screens[static_cast<int>(ScreenType::Menu)]->run(window);
+    ScreenType nextScreen = ScreenType::Menu;
 
-    switch(nextScreen)
+    while(true)
     {
-        case ScreenType::Menu:
-            break;
-        case ScreenType::Game:
-            break;
-        case ScreenType::Settings:
-            break;
-        case ScreenType::Exit:
-            std::cout << "Return value \"Exit\" catched! Exiting" << std::endl;
-            break;
-        case ScreenType::Error:
-            std::cout << "Return value \"Error\" catched! Exiting" << std::endl;
-            break;
+        nextScreen = screens[static_cast<int>(nextScreen)]->run(window);
+
+        switch(nextScreen)
+        {
+            case ScreenType::Menu:
+                break;
+            case ScreenType::Game:
+                break;
+            case ScreenType::Settings:
+                break;
+            case ScreenType::Exit:
+                std::cout << "Return value \"Exit\" catched! Exiting" << std::endl;
+                return;
+                break;
+            case ScreenType::Error:
+                std::cout << "Return value \"Error\" catched! Exiting" << std::endl;
+                return;
+                break;
+        }
     }
+    
 }

@@ -1,11 +1,12 @@
 #include <iostream>
 #include "Button.hpp"
 
-Button::Button(const sf::Font &font, sf::Vector2f relativePos, std::string message)
+Button::Button(const sf::Font &font, sf::Vector2f relativePos, std::string message, Align align)
 : Drawable(Priority::GUI)
 , font(font)
 , relativePos(relativePos)
 , isHighlighted(false)
+, align(align)
 {
     text.setFont(font);
     text.setString(message);
@@ -20,7 +21,15 @@ Button::Button(const sf::Font &font, sf::Vector2f relativePos, std::string messa
     rectangle.setSize(sf::Vector2f((float)(text.getLocalBounds().width +  B_DEF_SPACES_FROM_BUTTON_SIDES)
         , B_DEF_BUTTON_HEIGHT));
     
-    setOriginToCenter();
+    switch(align)
+    {
+        case Align::Center: 
+            setOriginToCenter();
+            break;
+        case Align::TopLeft:
+            setOriginTopLeft();
+            break;
+    }
 
     std::cout << "Button [" << message << "] constructed!" << std::endl;
 }
@@ -34,11 +43,17 @@ void Button::setOriginToCenter()
 {
     sf::FloatRect newOrigin = rectangle.getLocalBounds();
     rectangle.setOrigin(newOrigin.left + newOrigin.width/2.0f,
-            newOrigin.top  + newOrigin.height/2.0f);
+            newOrigin.top  + newOrigin.height/2.0f); 
 
     newOrigin = text.getLocalBounds();
     text.setOrigin(newOrigin.left + newOrigin.width/2.0f,
             newOrigin.top  + newOrigin.height/2.0f); 
+}
+
+void Button::setOriginTopLeft()
+{
+    text.setOrigin(-B_DEF_SPACES_FROM_BUTTON_SIDES/2.0f
+    , B_DEF_BUTTON_HEIGHT/10.0f); 
 }
 
 void Button::draw(sf::RenderTarget &target) const
@@ -68,7 +83,10 @@ void Button::onHover(sf::Vector2i mouse)
 void Button::onClick(sf::Vector2i mouse)
 {
     if(isHighlighted)
+    {
         std::cout << "Click on button [" << text.getString().toAnsiString() << "]" << std::endl;
+        function();
+    }
 }
 
 void Button::setHighlight(bool isHighlighted)
