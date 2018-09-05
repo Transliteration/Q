@@ -1,7 +1,7 @@
 #pragma once 
 #include <SFML/Graphics.hpp>
-#include "Drawable.hpp"
-#include "Clickable.hpp"
+#include "../Objects/Drawable.hpp"
+#include "../Objects/Clickable.hpp"
 
 #define B_DEF_CHAR_SIZE 52
 #define B_DEF_SPACES_FROM_BUTTON_SIDES 20
@@ -30,7 +30,7 @@ public:
     Button(const sf::Font &font, sf::Vector2f relativePos, std::string message, Align);
     ~Button();
 
-    virtual void draw(sf::RenderTarget &target) const;
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     virtual void onChangeResoluton(sf::Vector2u newResolution);
     virtual void onClick(sf::Vector2i);
     virtual void onHover(sf::Vector2i);

@@ -1,7 +1,7 @@
 #include <memory>
 #include "ScreenMenu.hpp"
-#include "Settings.hpp"
-#include "Button.hpp"
+#include "../Settings/Settings.hpp"
+#include "../Button/Button.hpp"
 
 ScreenMenu::ScreenMenu(Settings &settings)
 : Screen(settings)
@@ -91,7 +91,8 @@ ScreenType ScreenMenu::run(sf::RenderWindow &window)
 		window.clear(sf::Color(0, 0, 0, 0));
 
         for (const auto &object : objects)
-            object->draw(window);
+            window.draw(*object);
+            //object->draw(window);
 		
 		window.display();
 

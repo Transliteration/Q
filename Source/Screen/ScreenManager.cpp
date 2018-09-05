@@ -49,10 +49,13 @@ void ScreenManager::start()
         switch(nextScreen)
         {
             case ScreenType::Menu:
+                return;
                 break;
             case ScreenType::Game:
+                return;
                 break;
             case ScreenType::Settings:
+                return;
                 break;
             case ScreenType::Exit:
                 std::cout << "Return value \"Exit\" catched! Exiting" << std::endl;

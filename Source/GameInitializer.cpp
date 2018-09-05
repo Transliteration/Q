@@ -1,6 +1,6 @@
 #include <iostream>
 #include "GameInitializer.hpp"
-#include "ScreenManager.hpp"
+#include "Screen/ScreenManager.hpp"
 
 void GameInitializer::initialize()
 {

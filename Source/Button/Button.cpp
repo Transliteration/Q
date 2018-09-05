@@ -56,7 +56,7 @@ void Button::setOriginTopLeft()
     , B_DEF_BUTTON_HEIGHT/10.0f); 
 }
 
-void Button::draw(sf::RenderTarget &target) const
+void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(rectangle);
     target.draw(text);

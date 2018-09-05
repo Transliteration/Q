@@ -2,7 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <memory>
-#include "Settings.hpp"
+#include "../Settings/Settings.hpp"
 #include "Screen.hpp"
 
 #define SM_WINDOW_NAME "Q"

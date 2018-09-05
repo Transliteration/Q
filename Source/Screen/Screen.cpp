@@ -1,5 +1,5 @@
 #include "Screen.hpp"
-#include "Drawable.hpp"
+#include "../Objects/Drawable.hpp"
 
 Screen::Screen(Settings &settings)
 : settings(settings)

@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
-#include "Drawable.hpp"
-#include "Clickable.hpp"
+#include "../Objects/Drawable.hpp"
+#include "../Objects/Clickable.hpp"
 
 class Settings;
 
