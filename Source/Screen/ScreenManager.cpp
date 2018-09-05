@@ -1,5 +1,7 @@
 #include "ScreenManager.hpp"
 #include "ScreenMenu.hpp"
+#include "ScreenGame.hpp"
+#include "ScreenSettings.hpp"
 #include <SFML/Graphics.hpp>
 
 ScreenManager::ScreenManager(Settings &settings)
@@ -24,8 +26,8 @@ ScreenManager::ScreenManager(Settings &settings)
     {
         screens.reserve(3);
         screens.emplace_back(new ScreenMenu(settings)); // Menu
-        //screens.emplace_back(new Screen()); // Settings
-        //screens.emplace_back(new Screen()); // Game
+        screens.emplace_back(new ScreenSettings(settings)); // Settings
+        screens.emplace_back(new ScreenGame(settings)); // Game
     }
 
     std::cout << "ScreenManager created!" << std::endl;
@@ -49,13 +51,12 @@ void ScreenManager::start()
         switch(nextScreen)
         {
             case ScreenType::Menu:
-                return;
                 break;
             case ScreenType::Game:
-                return;
+            std::cout << "Game!!!!!" << std::endl;
                 break;
             case ScreenType::Settings:
-                return;
+            std::cout << "Settings!!!" << std::endl;
                 break;
             case ScreenType::Exit:
                 std::cout << "Return value \"Exit\" catched! Exiting" << std::endl;

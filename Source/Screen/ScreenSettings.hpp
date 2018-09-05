@@ -3,13 +3,13 @@
 #include <SFML/Graphics.hpp>
 #include "Screen.hpp"
 
-class ScreenGame : public Screen
+class ScreenSettings : public Screen
 {
 private:
     
 public:
-    ScreenGame(Settings &settings);
-    ~ScreenGame();
+    ScreenSettings(Settings &settings);
+    ~ScreenSettings();
 
     ScreenType run(sf::RenderWindow &window);
 };
