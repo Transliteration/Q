@@ -31,12 +31,12 @@ Button::Button(const sf::Font &font, sf::Vector2f relativePos, std::string messa
             break;
     }
 
-    std::cout << "Button [" << message << "] constructed!" << std::endl;
+    std::cout << "[Button] \"" << message << "\" constructed!" << std::endl;
 }
 
 Button::~Button()
 {
-    std::cout << "Button [" << text.getString().toAnsiString() << "] destroyed!" << std::endl;
+    std::cout << "[Button] \"" << text.getString().toAnsiString() << "\" destroyed!" << std::endl;
 }
 
 void Button::setOriginToCenter()
@@ -84,7 +84,7 @@ void Button::onClick(sf::Vector2i mouse)
 {
     if(isHighlighted)
     {
-        std::cout << "Click on button [" << text.getString().toAnsiString() << "]" << std::endl;
+        std::cout << "[Button] Click on button \"" << text.getString().toAnsiString() << "\"" << std::endl;
         function();
     }
 }

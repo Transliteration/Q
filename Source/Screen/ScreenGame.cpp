@@ -2,8 +2,13 @@
 
 ScreenGame::ScreenGame(Settings &settings)
 : Screen(settings)
+, player(new Player())
 {
+    std::shared_ptr<GameMap> map(new GameMap("Data/map")); 
+    objects.emplace_back(map);
+    objects.emplace_back(player);
     
+    sortDrawables();
 }
 
 ScreenGame::~ScreenGame()
@@ -58,8 +63,7 @@ ScreenType ScreenGame::run(sf::RenderWindow &window)
                             break;
                         default:
                             break;
-                    }
-                    
+                    }         
 			}
 		}
 

@@ -30,17 +30,17 @@ ScreenManager::ScreenManager(Settings &settings)
         screens.emplace_back(new ScreenGame(settings)); // Game
     }
 
-    std::cout << "ScreenManager created!" << std::endl;
+    std::cout << "[SM] ScreenManager created!" << std::endl;
 }
 
 ScreenManager::~ScreenManager()
 {
-    std::cout << "ScreenManager destroyed!" << std::endl;
+    std::cout << "[SM] ScreenManager destroyed!" << std::endl;
 }
 
 void ScreenManager::start()
 {
-    std::cout << "Opening menu..." << std::endl;
+    std::cout << "[SM] Opening menu..." << std::endl;
 
     ScreenType nextScreen = ScreenType::Menu;
 
@@ -53,17 +53,17 @@ void ScreenManager::start()
             case ScreenType::Menu:
                 break;
             case ScreenType::Game:
-            std::cout << "Game!!!!!" << std::endl;
+            std::cout << "[SM] Game!!!!!" << std::endl;
                 break;
             case ScreenType::Settings:
-            std::cout << "Settings!!!" << std::endl;
+            std::cout << "[SM] Settings!!!" << std::endl;
                 break;
             case ScreenType::Exit:
-                std::cout << "Return value \"Exit\" catched! Exiting" << std::endl;
+                std::cout << "[SM] Return value \"Exit\" catched! Exiting" << std::endl;
                 return;
                 break;
             case ScreenType::Error:
-                std::cout << "Return value \"Error\" catched! Exiting" << std::endl;
+                std::cout << "[SM] Return value \"Error\" catched! Exiting" << std::endl;
                 return;
                 break;
         }

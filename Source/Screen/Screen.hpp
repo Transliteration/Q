@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
+#include <algorithm>
+#include <iostream>
 #include "../Objects/Drawable.hpp"
 #include "../Objects/Clickable.hpp"
 
@@ -20,5 +22,5 @@ public:
     Screen(Settings &settings);
     virtual ~Screen();
     virtual ScreenType run(sf::RenderWindow &window) = 0;
-    
+    void sortDrawables();
 };
