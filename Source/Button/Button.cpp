@@ -72,12 +72,15 @@ void Button::onChangeResoluton(sf::Vector2u newResolution)
 void Button::onHover(sf::Vector2i mouse)
 {
     sf::FloatRect rect(rectangle.getGlobalBounds());
-
+    static Button *prevHLButton = this;
+    
     if(rect.contains((sf::Vector2f)mouse))
     {
+        prevHLButton->setHighlight(false);
+        prevHLButton = this;
         setHighlight(true);
         // std::cout << "Hover over button." << std::endl;
-    } else setHighlight(false);
+    }
 }
 
 void Button::onClick(sf::Vector2i mouse)
